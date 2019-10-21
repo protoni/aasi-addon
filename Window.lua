@@ -126,7 +126,6 @@ function Window:setUpdateFunctionality()
     self.frame:SetScript('OnUpdate', function()
         if Window.frame:GetWidth() ~= Window.oldFrameWidth or 
             Window.frame:GetHeight() ~= Window.oldFrameHeight then
-            print("Update");
             Window:updatePos();
             Window:saveOldPos();
         end
