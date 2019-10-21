@@ -4,6 +4,10 @@
 ## Notes: A addon to view buffs and debuffs on players. Also a dispell helper.
 ## Author: Toni
 
+
 AasiAddon.xml
 
+Window.lua
+SpellView.lua
+Settings.lua
 AasiAddon.lua
