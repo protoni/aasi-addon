@@ -94,7 +94,7 @@ function Window:updatePos()
     self.height = self.frame:GetHeight();
 end
 
-function Window:setFunctionality()
+function Window:setResizableFunctionality()
     if self.resizable then
         self.frame:SetMinResize(mainWindowMinResizeWidth, mainWindowMinResizeHeight)
         self.frame:SetMaxResize(mainWindowMaxResizeWidth, mainWindowMaxResizeHeight)
@@ -102,7 +102,9 @@ function Window:setFunctionality()
         self.frame:SetScript("OnDragStart", self.frame.StartMoving)
         self.frame:SetScript("OnDragStop", self.frame.StopMovingOrSizing)
     end
+end
 
+function Window:setMovableFunctionality()
     if self.movable then
         self.frame:SetScript("OnMouseDown", function(self, button)
             local mouseX, mouseY = Window:getMousePos();
@@ -118,7 +120,9 @@ function Window:setFunctionality()
             Window.frame:StopMovingOrSizing()
         end)
     end
+end
 
+function Window:setUpdateFunctionality()
     self.frame:SetScript('OnUpdate', function()
         if Window.frame:GetWidth() ~= Window.oldFrameWidth or 
             Window.frame:GetHeight() ~= Window.oldFrameHeight then
@@ -127,6 +131,12 @@ function Window:setFunctionality()
             Window:saveOldPos();
         end
     end)
+end
+
+function Window:setFunctionality()
+    self:setResizableFunctionality();
+    self:setMovableFunctionality();
+    self:setUpdateFunctionality();
 end
 
 function Window:hideWindow()
