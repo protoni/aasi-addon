@@ -1,0 +1,9 @@
+## Interface: 80205
+## Title : AasiAddon
+## Version: 0.1
+## Notes: A addon to view buffs and debuffs on players. Also a dispell helper.
+## Author: Toni
+
+AasiAddon.xml
+
+AasiAddon.lua
