@@ -33,10 +33,11 @@ Window = {
     resizeRangeY = mainWindowResizeRangeY;
 }
 
-function Window:new(o, width, height, movable, resizable, mouseEnabled)
+function Window:new(o, spellView, width, height, movable, resizable, mouseEnabled)
     o = o or {};
     setmetatable(o, self);
     self.__index = self;
+    self.spellView = spellView;
     self.width = width or mainWindowDefaultWidth;
     self.height = height or mainWindowDefaultHeight;
     self.oldFrameWidth = 0;
@@ -128,6 +129,7 @@ function Window:setUpdateFunctionality()
             Window.frame:GetHeight() ~= Window.oldFrameHeight then
             Window:updatePos();
             Window:saveOldPos();
+            Window.spellView:update();
         end
     end)
 end
